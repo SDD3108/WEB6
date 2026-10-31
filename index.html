@@ -4,9 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="app.js" defer></script>
     <title>Document</title>
 </head>
-<body>
-    
-</body>
+<body class="min-h-screen flex flex-col bg-slate-100 text-slate-800 font-sans">
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="text-xl font-bold text-blue-600">Assignment 6</a>
+            <nav aria-label="Main navigation" class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-slate-700">
+                <a class="hover:text-blue-600" href="index.html">Basics</a>
+                <a class="hover:text-blue-600" href="effects.html">Effects</a>
+                <a class="hover:text-blue-600" href="dom.html">DOM</a>
+                <a class="hover:text-blue-600" href="animations.html">Animations</a>
+                <a class="hover:text-blue-600" href="gallery.html">Gallery</a>
+            </nav>
+        </div>
+    </header>
+    <main class="w-full max-w-5xl mx-auto px-5 py-10 flex-1">
+        <div class="mb-7">
+            <h1 class="text-3xl font-bold">Part 1 — jQuery Basics</h1>
+            <p class="mt-2 text-slate-500">Task 0 and Task 1. Selectors and simple DOM changes.</p>
+        </div>
+        <div class="space-y-6">
+            <section class="rounded-xl bg-white p-5 border border-slate-200 shadow-[0_5px_15px_rgba(0,0,0,0.35)] space-y-4">
+                <div>
+                    <p class="text-sm text-blue-600 font-semibold">Task 0</p>
+                    <h2 class="text-xl font-semibold mt-1">Getting Started</h2>
+                    <p class="text-sm text-slate-500 mt-1">Check if jQuery is connected.</p>
+                </div>
+                <p class="bg-slate-100 rounded-lg p-3 text-sm">Open Developer Tools (F12) → Console. You should see<strong>jQuery is ready!</strong></p>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" id="check-console" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 cursor-pointer">Check console</button>
+                </div>
+                <p id="ready-status" class="text-sm text-green-700">jQuery loaded.</p>
+            </section>
+            <section class="rounded-xl bg-white p-5 border border-slate-200 shadow-[0_5px_15px_rgba(0,0,0,0.35)] space-y-4">
+                <div>
+                    <p class="text-sm text-blue-600 font-semibold">Task 1</p>
+                    <h2 class="text-xl font-semibold mt-1">Selectors & CSS</h2>
+                    <p class="text-sm text-slate-500 mt-1">Select by ID, class and tag and change the content/styles.</p>
+                </div>
+                <div class="bg-slate-50 border rounded-lg p-4 space-y-2">
+                    <p id="id-target">This line has an ID.</p>
+                    <p class="class-target">This line has a class.</p>
+                    <p>And this is an <em>em tag</em> inside a paragraph.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" id="selector-id" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 cursor-pointer">Change ID text</button>
+                    <button type="button" id="selector-class" class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer">Change class HTML</button>
+                    <button type="button" id="selector-tag" class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer">Change tag CSS</button>
+                    <button type="button" id="selector-reset" class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer">Reset</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="mt-auto bg-white border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-5 py-5 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+            <p>Web Technologies • Assignment 6</p>
+            <p>Satimov Damir | SE-2525</p>
+        </div>
+    </footer>
+  </body>
 </html>

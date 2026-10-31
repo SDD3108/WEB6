@@ -4,9 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="app.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    dom
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="text-xl font-bold text-blue-600">Assignment 6</a>
+            <nav aria-label="Main navigation" class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-slate-700">
+                <a class="hover:text-blue-600" href="index.html">Basics</a>
+                <a class="hover:text-blue-600" href="effects.html">Effects</a>
+                <a class="hover:text-blue-600" href="dom.html">DOM</a>
+                <a class="hover:text-blue-600" href="animations.html">Animations</a>
+                <a class="hover:text-blue-600" href="gallery.html">Gallery</a>
+            </nav>
+        </div>
+    </header>
+    <main class="w-full max-w-5xl mx-auto px-5 py-10 flex-1">
+        <div class="mb-7">
+            <h1 class="text-3xl font-bold">Part 3 — DOM Manipulation</h1>
+            <p class="mt-2 text-slate-500">Task 5–7. Lists, attributes, and forms.</p>
+        </div>
+        <div class="space-y-6">
+            <section class="rounded-xl bg-white p-5 border border-slate-200 shadow-[0_5px_15px_rgba(0,0,0,0.35)] space-y-4">
+                <div>
+                    <p class="text-sm text-blue-600 font-semibold">Task 5</p>
+                    <h2 class="text-xl font-semibold mt-1">Add & Remove</h2>
+                    <p class="text-sm text-slate-500 mt-1">Add items at the beginning/end or remove the last one</p>
+                </div>
+                <ul id="dynamic-list" class="space-y-2 list-none">
+                    <li class="rounded-md bg-slate-100 p-3">Item 1</li>
+                    <li class="rounded-md bg-slate-100 p-3">Item 2</li>
+                    <li class="rounded-md bg-slate-100 p-3">Item 3</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" id="add-last" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 cursor-pointer">Append</button>
+                    <button type="button" id="add-first" class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer">Prepend</button>
+                    <button type="button" id="remove-last" class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer">Remove last</button>
+                </div>
+            </section>
+            <section class="rounded-xl bg-white p-5 border border-slate-200 shadow-[0_5px_15px_rgba(0,0,0,0.35)] space-y-4">
+                <div>
+                    <p class="text-sm text-blue-600 font-semibold">Task 6</p>
+                    <h2 class="text-xl font-semibold mt-1">Change Attributes</h2>
+                    <p class="text-sm text-slate-500 mt-1">Use .attr() to update an image and a link.</p>
+                </div>
+                <img id="attribute-image" src="assets/images/slowdays.svg" alt="Slow Days art" class="w-full max-w-xs h-36 object-cover rounded-lg border border-slate-200">
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" id="change-image" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 cursor-pointer">Change image</button>
+                </div>
+                <p class="text-sm">Image: <span id="image-state">slowdays.svg</span></p>
+                <p><a id="dynamic-link" href="https://api.jquery.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">jQuery documentation</a></p>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" id="change-link" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 cursor-pointer">Change link</button>
+                </div>
+                <p class="text-sm">Link: <span id="link-state">jQuery API</span></p>
+            </section>
+            <section class="rounded-xl bg-white p-5 border border-slate-200 shadow-[0_5px_15px_rgba(0,0,0,0.35)] space-y-4">
+                <div>
+                    <p class="text-sm text-blue-600 font-semibold">Task 7</p>
+                    <h2 class="text-xl font-semibold mt-1">Live Form</h2>
+                    <p class="text-sm text-slate-500 mt-1">Your text appears below while you type.</p>
+                </div>
+                <form id="live-form" class="space-y-3" autocomplete="off">
+                    <div>
+                        <label class="text-sm font-medium block mb-1" for="name-input">Name</label>
+                        <input id="name-input" class="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:border-blue-500" type="text" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium block mb-1" for="email-input">Email</label>
+                        <input id="email-input" class="w-full border border-slate-300 rounded-md px-3 py-2 outline-none focus:border-blue-500" type="email" placeholder="name@example.com">
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" id="reset-form" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 cursor-pointer">Clear fields</button>
+                    </div>
+                </form>
+                <div class="rounded-lg bg-slate-100 p-4 text-sm space-y-1">
+                    <p>Name: <span id="preview-name" class="font-medium">—</span></p>
+                    <p>Email: <span id="preview-email" class="font-medium">—</span></p>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="mt-auto bg-white border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-5 py-5 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+            <p>Web Technologies • Assignment 6</p>
+            <p>Satimov Damir | SE-2525</p>
+        </div>
+    </footer>
 </body>
 </html>

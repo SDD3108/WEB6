@@ -4,9 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="app.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    mini-project
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="text-xl font-bold text-blue-600">Assignment 6</a>
+            <nav aria-label="Main navigation" class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-slate-700">
+                <a class="hover:text-blue-600" href="index.html">Basics</a>
+                <a class="hover:text-blue-600" href="effects.html">Effects</a>
+                <a class="hover:text-blue-600" href="dom.html">DOM</a>
+                <a class="hover:text-blue-600" href="animations.html">Animations</a>
+                <a class="hover:text-blue-600" href="gallery.html">Gallery</a>
+            </nav>
+        </div>
+    </header>
+    <main class="w-full max-w-5xl mx-auto px-5 py-10 flex-1">
+        <div class="mb-7">
+            <h1 class="text-3xl font-bold">Part 5 — Image Gallery</h1>
+            <p class="mt-2 text-slate-500">Mini project. Small gallery with jQuery effects.</p>
+        </div>
+        <div class="space-y-6">
+            <section class="rounded-xl bg-white p-5 border border-slate-200 shadow-[0_5px_15px_rgba(0,0,0,0.35)] space-y-4">
+                <div>
+                    <h2 class="text-xl font-semibold">Task 11 — Image Gallery</h2>
+                    <p class="text-sm text-slate-500 mt-1">Click a picture to see it bigger. You can also filter the images.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" class="gallery-filter rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 cursor-pointer" data-filter="all">All</button>
+                    <button type="button" class="gallery-filter rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer" data-filter="nature">Nature</button>
+                    <button type="button" class="gallery-filter rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer" data-filter="abstract">Abstract</button>
+                    <button type="button" class="gallery-filter rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer" data-filter="night">Night</button>
+                </div>
+                <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <button type="button" class="gallery-item text-left overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-blue-400 cursor-pointer" data-title="Slow Days" data-category="nature">
+                        <img src="assets/images/slowdays.svg" alt="Slow Days artwork" class="w-full h-40 object-cover">
+                        <span class="block px-3 py-3 font-medium">Slow Days</span>
+                    </button>
+                    <button type="button" class="gallery-item text-left overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-blue-400 cursor-pointer" data-title="Blue Hour" data-category="nature">
+                        <img src="assets/images/bluehour.svg" alt="Blue Hour artwork" class="w-full h-40 object-cover">
+                        <span class="block px-3 py-3 font-medium">Blue Hour</span>
+                    </button>
+                    <button type="button" class="gallery-item text-left overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-blue-400 cursor-pointer" data-title="Afterglow" data-category="nature">
+                        <img src="assets/images/afterglow.svg" alt="Afterglow artwork" class="w-full h-40 object-cover">
+                        <span class="block px-3 py-3 font-medium">Afterglow</span>
+                    </button>
+                    <button type="button" class="gallery-item text-left overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-blue-400 cursor-pointer" data-title="Electric" data-category="abstract">
+                        <img src="assets/images/electric.svg" alt="Electric artwork" class="w-full h-40 object-cover">
+                        <span class="block px-3 py-3 font-medium">Electric</span>
+                    </button>
+                    <button type="button" class="gallery-item text-left overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-blue-400 cursor-pointer" data-title="Orbit" data-category="abstract">
+                        <img src="assets/images/orbit.svg" alt="Orbit artwork" class="w-full h-40 object-cover">
+                        <span class="block px-3 py-3 font-medium">Orbit</span>
+                    </button>
+                    <button type="button" class="gallery-item text-left overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-blue-400 cursor-pointer" data-title="Frequency" data-category="abstract">
+                        <img src="assets/images/frequency.svg" alt="Frequency artwork" class="w-full h-40 object-cover">
+                        <span class="block px-3 py-3 font-medium">Frequency</span>
+                    </button>
+                    <button type="button" class="gallery-item text-left overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-blue-400 cursor-pointer" data-title="Midnight" data-category="night">
+                        <img src="assets/images/midnight.svg" alt="Midnight artwork" class="w-full h-40 object-cover">
+                        <span class="block px-3 py-3 font-medium">Midnight</span>
+                    </button>
+                    <button type="button" class="gallery-item text-left overflow-hidden rounded-xl border border-slate-200 bg-white hover:border-blue-400 cursor-pointer" data-title="Elsewhere" data-category="night">
+                        <img src="assets/images/elsewhere.svg" alt="Elsewhere artwork" class="w-full h-40 object-cover">
+                        <span class="block px-3 py-3 font-medium">Elsewhere</span>
+                    </button>
+                </div>
+                <p id="gallery-counter" class="text-sm text-slate-500">8 images</p>
+            </section>
+            <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" class="hidden fixed inset-0 z-50 bg-black/80 p-4 items-center justify-center">
+                <div class="w-full max-w-3xl bg-white rounded-xl p-4 shadow-[0_5px_15px_rgba(0,0,0,0.35)]">
+                    <div class="flex justify-between items-center gap-3 mb-3">
+                        <h3 id="lightbox-title" class="font-semibold text-lg">Photo</h3>
+                        <button type="button" id="lightbox-close" class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer">Close ✕</button>
+                    </div>
+                    <img id="lightbox-image" alt="Selected artwork" src="assets/images/slowdays.svg" class="w-full max-h-[65vh] object-contain rounded-md bg-slate-100">
+                    <div class="flex items-center justify-between gap-3 mt-4">
+                        <button id="lightbox-prev" type="button" class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 hover:bg-slate-300 cursor-pointer">← Previous</button>
+                        <span id="lightbox-index" class="text-sm text-slate-500"></span>
+                        <button id="lightbox-next" type="button" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 cursor-pointer">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-auto bg-white border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-5 py-5 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+            <p>Web Technologies • Assignment 6</p>
+            <p>Satimov Damir | SE-2525</p>
+        </div>
+    </footer>
 </body>
 </html>
